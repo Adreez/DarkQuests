@@ -1,0 +1,9 @@
+name: DAQuests
+author: Adreez_
+version: DEV-0.0.1
+api-version: 1.16
+main: sk.Adreez.DarkQuests.Main
+commands:
+  quests:
+    description: For all commands type /quests help
+softdepend: [PlaceholderAPI]
