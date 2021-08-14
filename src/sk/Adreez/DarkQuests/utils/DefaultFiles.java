@@ -38,9 +38,6 @@ public class DefaultFiles {
             msgfc.set("Messages.no-permissions", "&cSorry but you´re not allowed to do this!");
             
             msgfc.set("Messages.usage.add", "&7Usage: &f/coins add <Nick> <number>");
-            msgfc.set("Messages.usage.set", "&7Usage: &f/coins set <Nick> <number>");
-            msgfc.set("Messages.usage.remove", "&7Usage: &f/coins remove <Nick> <number>");
-            msgfc.set("Messages.usage.check", "&7Usage: &f/coins check <Nick>");
             
             try {
                 msgfc.save(config);
@@ -53,12 +50,12 @@ public class DefaultFiles {
     }
 
 	public static void test() {
-		File testYML = new File("plugins/DAQuests/test.yml");
+		File questsYML = new File("plugins/DAQuests/quests.yml");
 		
-		if (!testYML.exists()) {
+		if (!questsYML.exists()) {
 			try {
 	            
-	            testYML.createNewFile();
+	            questsYML.createNewFile();
 	          
 	        } catch (IOException ex) {
 	            ex.printStackTrace();
@@ -66,10 +63,14 @@ public class DefaultFiles {
 	        }	
 		}
 		
-		FileConfiguration ttt = YamlConfiguration.loadConfiguration(testYML);
+		FileConfiguration quests = YamlConfiguration.loadConfiguration(questsYML);
+		
+		quests.options().copyDefaults(true);
+		
+		//quests.set("1.objective", "destroy");
 	
 		try {
-            ttt.save(testYML);
+            quests.save(questsYML);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
