@@ -1,17 +1,15 @@
+#//********************[ DarkQuests Made for Darkanian.eu ]********************\\
+#
+# If objective is destroy or place target must be block. 
 # 
 # As materials please use:
 # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-# Target can be lower case or uppercase
-#
-    #
-    # If objective is destroy or place target must be block. 
-    # 
-    # As materials please use:
-    # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-    # Target can be lowercase or uppercase.
-    # 
-    # If objective is kill target must be animal/monster
-    # 
+# Target can be lowercase or uppercase.
+# 
+# If objective is kill target must be animal/monster
+# https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Entity.html
+# 
+#\\********************[ DarkQuests by Adr3ez_]********************//
 Quests:
   '1':
     # Objective types: Destroy, Kill, Place
