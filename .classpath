@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/pracovná plocha/1st STAR • MC/BuildTools/Spigot/Spigot-API/target/spigot-api-1.16.5-R0.1-SNAPSHOT-shaded.jar">
+	<classpathentry kind="lib" path="C:/pracovná plocha/FOLDERS/1st STAR • MC/BuildTools/Spigot/Spigot-API/target/spigot-api-1.16.5-R0.1-SNAPSHOT-shaded.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/pracovná plocha/1st STAR • MC/Plugins Testing/plugins/PlaceholderAPI-2.10.10.jar">
+	<classpathentry kind="lib" path="C:/pracovná plocha/FOLDERS/1st STAR • MC/Plugins Testing/plugins/PlaceholderAPI-2.10.10.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

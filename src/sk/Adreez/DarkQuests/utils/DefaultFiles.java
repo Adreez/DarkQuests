@@ -3,11 +3,14 @@ package sk.Adreez.DarkQuests.utils;
 import java.io.File;
 import java.io.IOException;
 
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+
 public class DefaultFiles {
 
+	
 	
 	public static void Settings() {
         
@@ -48,32 +51,4 @@ public class DefaultFiles {
         }
         
     }
-
-	public static void test() {
-		File questsYML = new File("plugins/DAQuests/quests.yml");
-		
-		if (!questsYML.exists()) {
-			try {
-	            
-	            questsYML.createNewFile();
-	          
-	        } catch (IOException ex) {
-	            ex.printStackTrace();
-	            System.out.println("ERROR: Failed to create config.yml!");
-	        }	
-		}
-		
-		FileConfiguration quests = YamlConfiguration.loadConfiguration(questsYML);
-		
-		quests.options().copyDefaults(true);
-		
-		//quests.set("1.objective", "destroy");
-	
-		try {
-            quests.save(questsYML);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-	}
 }

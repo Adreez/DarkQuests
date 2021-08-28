@@ -1,4 +1,36 @@
-Ahoj:
-  - 'Co to JE???'
-  
-TEST: "Declined!"
+# 
+# As materials please use:
+# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+# Target can be lower case or uppercase
+#
+    #
+    # If objective is destroy or place target must be block. 
+    # 
+    # As materials please use:
+    # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+    # Target can be lowercase or uppercase.
+    # 
+    # If objective is kill target must be animal/monster
+    # 
+Quests:
+  '1':
+    # Objective types: Destroy, Kill, Place
+    Objective: Destroy
+    Target: grass_block
+    Count: '5'
+    Reward-commands:
+      - ''
+  '2':
+    # Objective types: Destroy, Kill, Place
+    Objective: Place
+    Target: grass_block
+    Count: '5'
+    Reward-commands:
+      - ''
+  '3':
+    # Objective types: Destroy, Kill, Place
+    Objective: Kill
+    Target: ZOMBIE
+    Count: '5'
+    Reward-commands:
+      - ''

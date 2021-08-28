@@ -20,20 +20,33 @@ public class Main extends JavaPlugin {
 	public static SQLGetter data;
 	public static FileConfiguration config;
 	
+	public static QuestsManager quests;
+	
 	@Override
 	public void onEnable() {
+		
+		
+		if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+			new PAPIManager().register();
+		} else {
+			getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "Quests: " + ChatColor.WHITE + "With placeholderAPI this plugin will work better!");
+		}
 		
 		inst = this;
 		
 		new File("plugins/DAQuests").mkdir();
 		DefaultFiles.Settings();
-		DefaultFiles.test();
 		
-		
-		config = YamlConfiguration.loadConfiguration(new File("plugins/DAQuests/config.yml")); //ReloadFile();
+		config = YamlConfiguration.loadConfiguration(new File("plugins/DAQuests/config.yml"));
 		
 		SQL = new MySQL();
 		data = new SQLGetter();
+
+		Main.quests = new QuestsManager(this);
+		
+/******************************/
+//[Try to CONNECT to SQL]	
+/******************************/
 		
 		try {
 			SQL.connect();
@@ -48,15 +61,34 @@ public class Main extends JavaPlugin {
 		}
 		
 		
+/******************************/
+//[Commands and Listeners]	
+/******************************/	
+		
 		this.getCommand("quests").setExecutor(new Commands());
 		getServer().getPluginManager().registerEvents(new clickEvent(), this);
 		Bukkit.getPluginManager().registerEvents(new onJoin(), this);
+		Bukkit.getPluginManager().registerEvents(new onDestroy(), this);
+		Bukkit.getPluginManager().registerEvents(new onKill(), this);
+		Bukkit.getPluginManager().registerEvents(new onPlace(), this);
+		
+		
+/******************************/
+//[Quests.yml COPY defaults]	
+/******************************/	
+		
+		//File quests = new File(this.getDataFolder(), "quests.yml");
+		/*File quests = new File("plugins/DAQuests/quests.yml");
+		
+		if (!quests.exists()) {
+			this.saveResource("quests.yml", false);
+		}*/
 	}
 	
 	@Override
 	public void onDisable() {
 		 if (SQL.isConnected()) {
-			 
+			 SQL.disconnect();
 		 }
 	}
 }
