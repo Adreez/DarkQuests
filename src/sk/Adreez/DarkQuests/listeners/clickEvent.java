@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import sk.Adreez.DarkQuests.Main;
+
 
 
 public class clickEvent implements Listener {
@@ -31,9 +31,6 @@ public class clickEvent implements Listener {
                 if (player != null) {
                 	
                 	player.sendMessage("Done!");
-                	
-                	Main.data.addCompletedQuest(e.getWhoClicked().getName().toString());
-                	Main.data.setActiveQuest(e.getWhoClicked().getName().toString(), 5);
                 	
                 	
                 	e.setCancelled(true);

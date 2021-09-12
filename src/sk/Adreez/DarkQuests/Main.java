@@ -10,17 +10,25 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 import sk.Adreez.DarkQuests.listeners.*;
+import sk.Adreez.DarkQuests.quests.QuestsFileManager;
+import sk.Adreez.DarkQuests.quests.QuestsManager;
 import sk.Adreez.DarkQuests.utils.*;
 
 public class Main extends JavaPlugin {
 
+	
+//*******************************************************\\		
 	
 	public static JavaPlugin inst;
 	public static MySQL SQL;
 	public static SQLGetter data;
 	public static FileConfiguration config;
 	
-	public static QuestsManager quests;
+	public static QuestsFileManager questsyml;
+	public static QuestsManager qm;
+	
+	
+//*******************************************************\\	
 	
 	@Override
 	public void onEnable() {
@@ -42,7 +50,9 @@ public class Main extends JavaPlugin {
 		SQL = new MySQL();
 		data = new SQLGetter();
 
-		Main.quests = new QuestsManager(this);
+
+		questsyml = new QuestsFileManager(this);
+		qm = new QuestsManager(this);
 		
 /******************************/
 //[Try to CONNECT to SQL]	
@@ -67,22 +77,14 @@ public class Main extends JavaPlugin {
 		
 		this.getCommand("quests").setExecutor(new Commands());
 		getServer().getPluginManager().registerEvents(new clickEvent(), this);
-		Bukkit.getPluginManager().registerEvents(new onJoin(), this);
-		Bukkit.getPluginManager().registerEvents(new onDestroy(), this);
-		Bukkit.getPluginManager().registerEvents(new onKill(), this);
-		Bukkit.getPluginManager().registerEvents(new onPlace(), this);
 		
+		if (SQL.isConnected()) {
+			Bukkit.getPluginManager().registerEvents(new onJoin(), this);
+			Bukkit.getPluginManager().registerEvents(new onDestroy(), this);
+			Bukkit.getPluginManager().registerEvents(new onKill(), this);
+			Bukkit.getPluginManager().registerEvents(new onPlace(), this);
+		}
 		
-/******************************/
-//[Quests.yml COPY defaults]	
-/******************************/	
-		
-		//File quests = new File(this.getDataFolder(), "quests.yml");
-		/*File quests = new File("plugins/DAQuests/quests.yml");
-		
-		if (!quests.exists()) {
-			this.saveResource("quests.yml", false);
-		}*/
 	}
 	
 	@Override
@@ -90,5 +92,6 @@ public class Main extends JavaPlugin {
 		 if (SQL.isConnected()) {
 			 SQL.disconnect();
 		 }
+		 questsyml.saveQuests();
 	}
 }

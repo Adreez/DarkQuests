@@ -14,16 +14,23 @@ public class onKill implements Listener {
 		
 		if (e.getEntity().getKiller() instanceof Player) {
 		
-			int ActiveQuest = Main.data.getActiveQuest(e.getEntity().getKiller().getName().toString());
+			int ActiveQuest = Main.data.getActiveQuest(e.getEntity().getKiller());
 			
-			String Objective = Main.quests.getQuests().getString("Quests." + ActiveQuest + ".Objective");
-			String ObjectiveTarget = Main.quests.getQuests().getString("Quests." + ActiveQuest + ".Target").toString().toUpperCase();
+			String Objective = Main.questsyml.getQuests().getString("Quests." + ActiveQuest + ".Objective");
+			String ObjectiveTarget = Main.questsyml.getQuests().getString("Quests." + ActiveQuest + ".Target").toUpperCase();
+			
+			int Progress = Main.data.getProgress(e.getEntity().getKiller());
+			int NeededProgress = Main.data.getNeededProgress(e.getEntity().getKiller());
 			
 			if (!Objective.isEmpty()) {
 				if (Objective.contains("Kill")) {
 					if (e.getEntity().getType().toString().equals(ObjectiveTarget)) {
-						Main.data.addToProgress(e.getEntity().getKiller().getName().toString());
-						e.getEntity().getKiller().sendMessage("TEST");
+						if (Progress < NeededProgress) {
+							Main.data.addToProgress(e.getEntity().getKiller());
+						}
+						else if (Progress >= NeededProgress) {
+							Main.qm.setQuestAsCompleted(e.getEntity().getKiller());
+						}
 						
 					}
 				}

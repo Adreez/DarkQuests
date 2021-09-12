@@ -24,14 +24,27 @@ public class Commands implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String string, String[] label) {
 		
+		Player player = (Player) sender;
+		
 		if (label.length == 0) {
 			if (sender instanceof Player) {
 				//ActiveQuest HERE
-				int p = Main.data.getProgress(sender.getName());
+				int p = Main.data.getProgress(player);
 				sender.sendMessage("You´re progress: " + p);
 			} else {
 				sender.sendMessage("Help message");
 			}
+		}
+		
+		else if (label[0].equalsIgnoreCase("random")) {
+			//Player targetplayer = Bukkit.getServer().getPlayer(label[1]);
+			
+			/*int quest = Main.qm.randomQuest(); 
+			
+			Main.data.setActiveQuest(targetplayer.getName().toString(), quest);
+			sender.sendMessage("Quest §a" + quest + "§fhas been set to " + targetplayer.getName().toString());*/
+			Main.data.setNeededProgress(player, Integer.parseInt(label[1]));
+			sender.sendMessage("DDAD");
 		}
 		
 /*
@@ -88,15 +101,14 @@ public class Commands implements CommandExecutor {
 				
 						if (isInt(label[2])) {
 							
-					
-							Player targetplayer = Bukkit.getServer().getPlayer(label[1]);
-							int questTOset = Integer.parseInt(label[2]);
-							
-							Main.data.setActiveQuest(targetplayer.getName().toString(), questTOset);
-							
-							sender.sendMessage("Quest " + questTOset + "Has been set to player " + targetplayer.getName());
-							
-							
+							if (Main.qm.CheckIfQuestsExists(label[2])) {
+								Player targetplayer = Bukkit.getServer().getPlayer(label[1]);
+								Main.qm.setQuest(targetplayer, Integer.parseInt(label[2]));
+								
+								sender.sendMessage("Quest " + label[2] + " Has been set to player " + targetplayer.getName());
+							} else {
+								sender.sendMessage("Quest does not exist!");
+							}
 							
 						} else {
 						

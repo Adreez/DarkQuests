@@ -6,29 +6,54 @@
 # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
 # Target can be lowercase or uppercase.
 # 
+# Objective types: Destroy, Kill, Place
+#
 # If objective is kill target must be animal/monster
 # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Entity.html
 # 
 #\\********************[ DarkQuests by Adr3ez_]********************//
+Display:
+  Destroy:
+    Name: 'Destroy: %target% %target_count%/%target_countNeeded%'
+    ShortLore: 'Destroy %target% %count% times'
+    LongLore: ''
+    - ''
+    - ''
+    - ''
+    - ''
+  Place:
+    Name: 'Place %target% %count% times'
+    ShortLore: 'Destroy %target% %count% times'
+    LongLore: ''
+    - ''
+    - ''
+    - ''
+    - ''
+  Kill:
+    Name: 'Kill %target% %count% times'
+    ShortLore: 'Destroy %target% %count% times'
+    LongLore: ''
+    - ''
+    - ''
+    - ''
+    - ''
+
 Quests:
   '1':
-    # Objective types: Destroy, Kill, Place
     Objective: Destroy
     Target: grass_block
     Count: '5'
     Reward-commands:
-      - ''
+    - ''
   '2':
-    # Objective types: Destroy, Kill, Place
     Objective: Place
     Target: grass_block
     Count: '5'
     Reward-commands:
-      - ''
+    - ''
   '3':
-    # Objective types: Destroy, Kill, Place
     Objective: Kill
     Target: ZOMBIE
     Count: '5'
     Reward-commands:
-      - ''
+    - ''

@@ -1,4 +1,4 @@
-package sk.Adreez.DarkQuests.utils;
+package sk.Adreez.DarkQuests.quests;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,14 +9,14 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import sk.Adreez.DarkQuests.Main;
 
-public class QuestsManager {
+public class QuestsFileManager {
 
 	private Main plugin;
 	private FileConfiguration questsConfig = null;
 	private File questsFile = null;
 	
 	
-	public QuestsManager(Main plugin) {
+	public QuestsFileManager(Main plugin) {
 		this.plugin = plugin;
 		saveDefaultQuests();
 	}
@@ -27,11 +27,6 @@ public class QuestsManager {
 		
 		this.questsConfig = YamlConfiguration.loadConfiguration(this.questsFile);
 		
-		/*InputStream defaultStream = this.plugin.getResource("quests.yml");
-		if (defaultStream != null) {
-			YamlConfiguration defaultQuests = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));	
-			this.questsConfig.setDefaults(defaultQuests);
-		}*/
 	}
 	
 	public FileConfiguration getQuests() {
@@ -61,14 +56,4 @@ public class QuestsManager {
 			this.plugin.saveResource("quests.yml", false);
 		}
 	}
-	
-	
-	
-	/*public void pickRandomQuest() {
-		
-	}
-	
-	public void getQuest(int i) {
-		quests.get
-	}*/
 }

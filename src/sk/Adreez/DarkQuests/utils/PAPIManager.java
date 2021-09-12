@@ -26,27 +26,52 @@ public class PAPIManager extends PlaceholderExpansion {
 	
     @Override
     public String onRequest(OfflinePlayer player, String params) {
-    	
-    	String error = "Error";
-    	
-        if(params.equalsIgnoreCase("creator")) {
-            return player == null ? null : player.getName(); // "name" requires the player to be valid
-        }
         
         if(params.equalsIgnoreCase("progress")) {
-        	String progress = String.valueOf(Main.data.getProgress(player.getName().toString()));
+        	String progress = String.valueOf(Main.data.getProgress(player.getPlayer()));
             return progress;
         }
+        
         if(params.equalsIgnoreCase("activequest")) {
-        	String active = String.valueOf(Main.data.getActiveQuest(player.getName().toString()));
-            return active;
-        }
-        if(params.equalsIgnoreCase("completedquests")) {
-        	String active = String.valueOf(Main.data.getCompletedQuests(player.getName().toString()));
+        	String active = String.valueOf(Main.data.getActiveQuest(player.getPlayer()));
             return active;
         }
         
-        return error; // Placeholder is unknown by the Expansion
+        if(params.equalsIgnoreCase("activequest_display_name")) {
+        	
+        	int ActiveQuest = Main.data.getActiveQuest(player.getPlayer());
+        	
+        	String QuestObjective = Main.questsyml.getQuests().getString("Quests." + ActiveQuest + ".Objective");
+        	
+        	if (QuestObjective == "Destroy") {
+        		String active = Main.questsyml.getQuests().getString("Display." + QuestObjective + ".Name");
+        		
+        		return active;
+        	}
+        	else if (QuestObjective == "Kill") {
+        		String active = Main.questsyml.getQuests().getString("Display." + QuestObjective + ".Name");
+        		
+        		return active;
+        	}
+        	
+        	else if (QuestObjective == "Place") {
+        		String active = Main.questsyml.getQuests().getString("Display." + QuestObjective + ".Name");
+        		
+        		return active;
+        	}
+ 
+        }
+        
+        if(params.equalsIgnoreCase("completedquests")) {
+        	String active = String.valueOf(Main.data.getCompletedQuests(player.getPlayer()));
+            return active;
+        }
+        if (params.equalsIgnoreCase("neededprogress")) {
+        	String progress = String.valueOf(Main.data.getNeededProgress(player.getPlayer()));
+        	return progress;
+        }
+        
+        return "";
     }
 
 }
