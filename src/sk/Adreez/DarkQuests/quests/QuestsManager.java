@@ -19,7 +19,10 @@ public class QuestsManager {
 	}
 	
 	public void setQuestAsCompleted(Player player) {
-		
+		Main.data.addCompletedQuest(player);
+		Main.data.setActiveQuest(player, 0);
+		Main.data.resetProgress(player);
+		Main.data.setNeededProgress(player, 0);
 	}
 	
 	public void setQuest(Player player, int quest) {

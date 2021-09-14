@@ -53,7 +53,7 @@ public class QuestsFileManager {
 			this.questsFile = new File("plugins/DAQuests/quests.yml");
 		
 		if (!this.questsFile.exists()) {
-			this.plugin.saveResource("quests.yml", false);
+			this.plugin.saveResource("quests.yml", true);
 		}
 	}
 }

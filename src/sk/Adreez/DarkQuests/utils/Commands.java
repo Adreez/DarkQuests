@@ -43,8 +43,6 @@ public class Commands implements CommandExecutor {
 			
 			Main.data.setActiveQuest(targetplayer.getName().toString(), quest);
 			sender.sendMessage("Quest §a" + quest + "§fhas been set to " + targetplayer.getName().toString());*/
-			Main.data.setNeededProgress(player, Integer.parseInt(label[1]));
-			sender.sendMessage("DDAD");
 		}
 		
 /*

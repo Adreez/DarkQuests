@@ -28,10 +28,13 @@ public class onDestroy implements Listener {
 				if (e.getBlock().getType().equals(Material.valueOf(ObjectiveTarget))) {
 					if (Progress < NeededProgress) {
 						Main.data.addToProgress(player);
+						if ((Progress + 1) == NeededProgress || NeededProgress == Progress) {
+							Main.qm.setQuestAsCompleted(player);
+						}
 					}
-					else if (Progress >= NeededProgress) {
+/*					else if (Progress == NeededProgress) {
 						Main.qm.setQuestAsCompleted(e.getPlayer());
-					}
+					}*/
 				}
 			}
 		}
