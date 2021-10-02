@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 import sk.Adreez.DarkQuests.listeners.*;
-import sk.Adreez.DarkQuests.quests.QuestsFileManager;
+import sk.Adreez.DarkQuests.quests.FilesManager;
 import sk.Adreez.DarkQuests.quests.QuestsManager;
 import sk.Adreez.DarkQuests.utils.*;
 
@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
 	public static SQLGetter data;
 	public static FileConfiguration config;
 	
-	public static QuestsFileManager questsyml;
+	public static FilesManager questsyml;
 	public static QuestsManager qm;
 	
 	
@@ -51,7 +51,7 @@ public class Main extends JavaPlugin {
 		data = new SQLGetter();
 
 
-		questsyml = new QuestsFileManager(this);
+		questsyml = new FilesManager(this);
 		qm = new QuestsManager(this);
 		
 /******************************/
@@ -89,7 +89,7 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		 questsyml.saveQuests();
+		 questsyml.saveFiles();
 		 
 		 if (SQL.isConnected()) {
 			 SQL.disconnect();

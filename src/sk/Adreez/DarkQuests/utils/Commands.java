@@ -24,6 +24,17 @@ public class Commands implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String string, String[] label) {
 		
+		
+		String helpmessage = "§8§n----------------§r §c§lDarkQuests §7Made by: §cAdr3ez_ §8§n----------------§r"
+				+ "\n"
+				+ "\n§c§lCommands §8»"
+				+ "\n  §8• §c/questsadmin set <player> <quest>"
+				+ "\n"
+				+ "\n"
+				+ "\n"
+				+ "\n"
+				+ "\n";
+		
 		Player player = (Player) sender;
 		
 		if (label.length == 0) {
@@ -32,17 +43,14 @@ public class Commands implements CommandExecutor {
 				int p = Main.data.getProgress(player);
 				sender.sendMessage("You´re progress: " + p);
 			} else {
-				sender.sendMessage("Help message");
+				sender.sendMessage(helpmessage);
 			}
 		}
 		
-		else if (label[0].equalsIgnoreCase("random")) {
-			//Player targetplayer = Bukkit.getServer().getPlayer(label[1]);
+		else if (label[0].equalsIgnoreCase("help")) {
 			
-			/*int quest = Main.qm.randomQuest(); 
+			sender.sendMessage(helpmessage);
 			
-			Main.data.setActiveQuest(targetplayer.getName().toString(), quest);
-			sender.sendMessage("Quest §a" + quest + "§fhas been set to " + targetplayer.getName().toString());*/
 		}
 		
 /*
@@ -140,6 +148,8 @@ public class Commands implements CommandExecutor {
 				
 				}
 			}
+		} else {
+			sender.sendMessage("Command not found!");
 		}
 		return false;
 	}
