@@ -35,7 +35,6 @@ public class DefaultFiles {
             msgfc.set("MySQL.password", "");
             msgfc.set("MySQL.table", "data");
             msgfc.set("MySQL.useSSL", "false");
-
             
             msgfc.set("Prefix", "&8[&6&lQuests&8] &8• &r");
             msgfc.set("Messages.no-permissions", "&cSorry but you´re not allowed to do this!");
